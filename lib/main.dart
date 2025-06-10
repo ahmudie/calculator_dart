@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:state_management/CalculatorView.dart';
+import 'CalculatorProvider.dart';
+import 'CalculatorView.dart';
 
 void main(){
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+        create: (_) => CalculatorProvider(),
+        child: const MyApp(),
+    )
+  );
+
 }
 
 class MyApp extends StatelessWidget{
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget{
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const CalculatorView(),
+      home:  CalculatorView(),
     );
   }
 }
